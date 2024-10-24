@@ -3,50 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio Saya</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Biodata dengan Glassmorphism</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Nama Anda</h1>
-        <p>Deskripsi Singkat Tentang Diri Anda</p>
-        <nav>
-            <ul>
-                <li><a href="#about">Tentang</a></li>
-                <li><a href="#projects">Proyek</a></li>
-                <li><a href="#cv">CV</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section id="about">
-        <h2>Tentang Saya</h2>
-        <p>Detail tentang latar belakang, keahlian, dan minat Anda.</p>
-    </section>
-
-    <section id="projects">
-        <h2>Proyek</h2>
-        <div class="project">
-            <h3>Judul Proyek 1</h3>
-            <p>Deskripsi proyek dan teknologi yang digunakan.</p>
+    <div class="container">
+        <div class="profile-header">
+            <img src="gambarzaki.jpeg" alt="Profile Image" class="profile-image">
+            <h1 id="fullName"></h1>
+            <p id="occupation"></p>
         </div>
-        <div class="project">
-            <h3>Judul Proyek 2</h3>
-            <p>Deskripsi proyek dan teknologi yang digunakan.</p>
+        <div class="section">
+            <h2>Informasi Pribadi</h2>
+            <div class="info-grid">
+                <div class="label">Tanggal Lahir:</div>
+                <div class="value" id="birthInfo"></div>
+            </div>
+            <div class="info-grid">
+                <div class="label">Jenis Kelamin:</div>
+                <div class="value" id="gender"></div>
+            </div>
+            <div class="info-grid">
+                <div class="label">Agama:</div>
+                <div class="value" id="religion"></div>
+            </div>
+            <div class="info-grid">
+                <div class="label">Alamat:</div>
+                <div class="value" id="address"></div>
+            </div>
+            <div class="info-grid">
+                <div class="label">Email:</div>
+                <div class="value" id="email"></div>
+            </div>
+            <div class="info-grid">
+                <div class="label">Nomor Telepon:</div>
+                <div class="value" id="phone"></div>
+            </div>
+            <div class="info-grid">
+                <div class="label">Media Sosial:</div>
+                <div class="value" id="social"></div>
+            </div>
         </div>
-        <!-- Tambahkan lebih banyak proyek sesuai kebutuhan -->
-    </section>
+        <div class="section">
+            <h2>Keterampilan</h2>
+            <div class="skills" id="skillsList"></div>
+        </div>
+    </div>
 
-    <section id="cv">
-        <h2>CV</h2>
-        <p>Unduh CV saya <a href="cv.pdf" target="_blank">di sini</a>.</p>
-        <!-- Atau jika CV dalam HTML:
-        <iframe src="cv.html" width="100%" height="500px"></iframe>
-        -->
-    </section>
+    <script>
+        const biodataData = {
+            fullName: "Zaki Nur Faturrohman",
+            occupation: "Mahasiswa",
+            birthInfo: "Banyumas, 25 Maret 2004",
+            gender: "Laki-laki",
+            religion: "Islam",
+            address: "Pliken, Kembaran, Banyumas",
+            email: "zakinurfaturrohman@gmail.com",
+            phone: "085724383332",
+            social: "@zaki.2594",
+            skills: [
+                "HTML", "CSS", "MySQL", "Microsoft Office"
+            ]
+        };
 
-    <footer>
-        <p>&copy; 2024 Nama Anda. Semua hak dilindungi.</p>
-    </footer>
+        function updateBiodata() {
+            document.getElementById('fullName').textContent = biodataData.fullName;
+            document.getElementById('occupation').textContent = biodataData.occupation;
+            document.getElementById('birthInfo').textContent = biodataData.birthInfo;
+            document.getElementById('gender').textContent = biodataData.gender;
+            document.getElementById('religion').textContent = biodataData.religion;
+            document.getElementById('address').textContent = biodataData.address;
+            document.getElementById('email').textContent = biodataData.email;
+            document.getElementById('phone').textContent = biodataData.phone;
+            document.getElementById('social').textContent = biodataData.social;
+
+            const skillsList = document.getElementById('skillsList');
+            skillsList.innerHTML = '';
+            biodataData.skills.forEach(skill => {
+                const skillItem = document.createElement('div');
+                skillItem.className = 'skill-item';
+                skillItem.textContent = skill;
+                skillsList.appendChild(skillItem);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', updateBiodata);
+    </script>
 </body>
 </html>
